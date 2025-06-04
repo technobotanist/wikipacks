@@ -1,0 +1,188 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0; /* Remove default margin */
+    overflow: hidden; /* Prevent scrolling to maintain centered content */
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative; /* Position relative to manage absolute children if needed */
+}
+
+.pack {
+    width: 200px;
+    height: 100px;
+    background-color: #3498db;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow for better visibility */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover animation */
+}
+
+.pack:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.cards {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+    max-height: 400px; /* Limit the height to prevent overflow */
+    overflow-y: auto;
+    padding: 20px; /* Add padding to avoid cards being cut off */
+    background-color: #ffffff; /* Make the cards area more distinct */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    width: 180px;
+    height: 320px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    padding: 15px;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Ensure cards animate on appearance */
+}
+
+.card-title {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-image-container {
+    width: 100%;
+    text-align: center;
+    flex-grow: 1; /* Make sure the image container takes as much space as possible */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the image within its container */
+}
+
+.card-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensure the image fits within its container */
+    margin-bottom: 10px;
+}
+
+.binder-popup {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    max-height: 80%; /* Limit the height so it fits comfortably */
+    overflow-y: auto; /* Add scrolling for overflow */
+    background: #ffffff;
+    border: 2px solid #ccc;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.binder-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.binder-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#binder-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center; /* Ensure cards within the binder are centered */
+    padding-bottom: 20px; /* Add padding to avoid content being cut off at the bottom */
+}
+
+/* Adjustments to improve the viewing and interaction with buttons */
+.nav-panel {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 10px;
+}
+
+.nav-panel button {
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: #3498db;
+    color: white;
+    transition: background 0.3s;
+}
+
+.nav-panel button:hover {
+    background: #2980b9;
+}
+
+/* Additional styling for better responsiveness */
+@media (max-width: 768px) {
+    .cards, #binder-container {
+        gap: 10px;
+    }
+    .card {
+        width: 150px;
+        height: 270px;
+        padding: 10px;
+    }
+    .pack {
+        width: 180px;
+        height: 90px;
+    }
+    .nav-panel {
+        top: 5px;
+        right: 5px;
+        padding: 5px;
+    }
+    .nav-panel button {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
